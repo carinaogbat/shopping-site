@@ -62,6 +62,16 @@ def show_melon(melon_id):
 def show_shopping_cart():
     """Display content of shopping cart."""
 
+    if "cart" not in session:
+        redirect("/all_melons.html")
+
+    print(session.items())
+
+    # session["cart"]["melon_id"]
+      
+
+    total_cost_of_order = 0
+
 
     # TODO: Display the contents of the shopping cart.
 
@@ -104,18 +114,6 @@ def add_to_cart(melon_id):
     flash("Added to cart")
 
     print(session["cart"])
-
-
-    # TODO: Finish shopping cart functionality
-
-    # The logic here should be something like:
-    #
-    # - check if a "cart" exists in the session, and create one (an empty
-    #   dictionary keyed to the string "cart") if not
-    # - check if the desired melon id is the cart, and if not, put it in
-    # - increment the count for that melon id by 1
-    # - flash a success message
-    # - redirect the user to the cart page
 
     return redirect("/cart.html")
 
